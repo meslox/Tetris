@@ -128,13 +128,13 @@ sudo pacman -S base-devel ncurses mpv socat git
 If the project is hosted on GitHub:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git
+git clone https://github.com/meslox/Tetris.git
 ```
 
 Enter the project directory:
 
 ```bash
-cd YOUR_REPOSITORY
+cd Tetris
 ```
 
 > Replace `YOUR_USERNAME/YOUR_REPOSITORY` with the actual GitHub repository.
