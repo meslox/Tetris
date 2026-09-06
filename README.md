@@ -19,20 +19,16 @@ The game includes:
 ---
 
 ## 📸 Gameplay
+<p align="center">
+  <img width="800" height="574" alt="Image" src="https://github.com/user-attachments/assets/9efbac33-0ded-42fa-856c-75a61c4751bb" />
 
-> Add a gameplay GIF here.
+</p>
 
-Replace `docs/gameplay.gif` with the path to your GIF:
+<p align="center">
+  <img width="600" height="400" alt="Image" src="https://github.com/user-attachments/assets/5b3c3bd0-3576-47b9-9fcc-27204736ed0d" />
 
-```markdown
-![Tetris Gameplay](docs/gameplay.gif)
-```
+</p>
 
-You can also use a full-width image/GIF hosted online:
-
-```markdown
-![Tetris Gameplay](https://your-domain.com/gameplay.gif)
-```
 
 ### Recommended repository structure
 
@@ -44,8 +40,7 @@ Tetris/
 ├── highscore.txt
 ├── tetris
 ├── README.md
-└── docs/
-    └── gameplay.gif
+
 ```
 
 ---
