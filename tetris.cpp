@@ -116,7 +116,7 @@ void play_music()
     system(
         "mpv --no-video --loop=inf --really-quiet "
         "--input-ipc-server=/tmp/tetris-mpv.sock "
-        "/audio/tetris.mp3 > /dev/null 2>&1 &"
+        "tetris.mp3 > /dev/null 2>&1 &"
     );
 }
 
