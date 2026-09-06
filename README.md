@@ -30,7 +30,7 @@ The game includes:
 </p>
 
 
-### Recommended repository structure
+### Repository structure
 
 ```text
 Tetris/
@@ -343,8 +343,6 @@ Tetris/
 ├── tetris           # Compiled executable
 ├── README.md        # Project documentation
 │
-└── docs/
-    └── gameplay.gif # Optional gameplay GIF for README
 ```
 
 ### `tetris.cpp`
@@ -565,13 +563,13 @@ sudo dnf install gcc-c++ ncurses-devel mpv socat git
 Clone the repository:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git
+git clone https://github.com/meslox/Tetris.git
 ```
 
 Enter the directory:
 
 ```bash
-cd YOUR_REPOSITORY
+cd Tetris
 ```
 
 Compile:
