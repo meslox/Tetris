@@ -1,1 +1,2 @@
-g++ tetris.cpp -o main -lncursesw && ./main
+g++ tetris.cpp -o tetris -lncursesw 
+# && ./tetris
