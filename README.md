@@ -10,11 +10,10 @@ The game includes:
 - ⬇️ Soft drop
 - 🧹 Line clearing
 - 🏆 Score and persistent high score
-- ⏸️ Pause menu
+- ⏸️ Pause menu    
 - 🎵 Background music
 - 🎨 Colored terminal graphics
 - ⌨️ Keyboard controls
-- 🖥️ Automatic terminal-size detection
 - ✨ Unicode/block-character based graphics
 
 ---
