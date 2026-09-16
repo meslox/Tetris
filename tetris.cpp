@@ -1,4 +1,23 @@
-#include <ncursesw/curses.h>
+#ifdef _WIN32
+    // ---- Windows build: PDCursesMod stands in for ncursesw -------------
+    // Build PDCursesMod (https://github.com/Bill-Gray/PDCursesMod) with
+    // WIDE=Y and UTF8=Y so mvaddwstr()/wide glyphs work exactly like on
+    // ncursesw, then compile this file against its curses.h/lib.
+    #define PDC_WIDE
+    #define PDC_FORCE_UTF8
+    #include <curses.h>
+    #include <windows.h>
+    #include <mmsystem.h>
+    #ifdef _MSC_VER
+        #pragma comment(lib, "winmm.lib")
+    #endif
+#else
+    #include <ncursesw/curses.h>
+    #include <sys/types.h>
+    #include <sys/wait.h>
+    #include <unistd.h>
+#endif
+
 #include <locale.h>
 #include <iterator>
 #include <string>
@@ -8,9 +27,6 @@
 #include <thread>
 #include <chrono>
 #include <cwchar>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <unistd.h>
 #include <cstdio>
 #include <cmath>
 #include <fstream>
@@ -109,6 +125,37 @@ GameValues values;
 
 
 
+#ifdef _WIN32
+
+// ---- Windows build: same three entry points, driven by the Windows
+// multimedia (MCI) API instead of mpv/socat, so behaviour (start looped
+// music on play, allow pause/resume, stop on exit) is unchanged. ------
+void play_music()
+{
+    mciSendStringA("close tetrisMusic", NULL, 0, NULL);
+    mciSendStringA("open \"tetris.mp3\" type mpegvideo alias tetrisMusic", NULL, 0, NULL);
+    mciSendStringA("play tetrisMusic repeat", NULL, 0, NULL);
+}
+
+void stop_music()
+{
+    mciSendStringA("close tetrisMusic", NULL, 0, NULL);
+}
+
+void pause_music()
+{
+    static bool isPaused = false;
+
+    if (!isPaused)
+        mciSendStringA("pause tetrisMusic", NULL, 0, NULL);
+    else
+        mciSendStringA("resume tetrisMusic", NULL, 0, NULL);
+
+    isPaused = !isPaused;
+}
+
+#else
+
 void play_music()
 {
     system("rm -f /tmp/tetris-mpv.sock");
@@ -137,6 +184,8 @@ void pause_music()
     if (pipe)
         pclose(pipe);
 }
+
+#endif
 void rotation (int &index , int &rotate , int i , int j){
     if (rotate == 0){
         index = (i*4) + j + 1;
@@ -1083,6 +1132,10 @@ private:
 public:
     GameEngine(){
         setlocale(LC_ALL, "");
+#ifdef _WIN32
+        SetConsoleOutputCP(CP_UTF8);
+        SetConsoleCP(CP_UTF8);
+#endif
         initscr();
         noecho();
         curs_set(0);
