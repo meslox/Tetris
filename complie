@@ -1,1 +1,1 @@
-g++ tetris.cpp -o tetris.exe -I<pdcurses_include> -L<pdcurses_lib> -lpdcurses -lwinmm
+g++ tetris.cpp -o tetris -lncursesw && ./tetris
